@@ -21,27 +21,26 @@ exports.up = function(knex) {
 
           tbl.string(`description`).notNullable();
           tbl.string(`notes`);
-          tbl.bolean(`completed`).defaultTo(false);
+          tbl.boolean(`completed`).defaultTo(false);
           tbl.integer(`project_id`)
           .notNullable()
           .unsigned()
-          .references(`id`)
+          .references()
           .inTable(`projects`);
       })
       .createTable(`prim_connection`, tbl => {
-          tbl.increments();
           tbl
           .integer(`project_id`)
           .unsigned()
           .notNullable()
-          .references(`id`)
-          .inTable(`projects`);
+          .references(`projects.id`);
 
           tbl.integer(`resources_id`)
           .unsigned()
           .notNullable()
-          .references(id)
-          .integer(resources);
+          .references(`resources.id`);
+
+          tbl.primary([`project_id`, `resources_id`]);
       })
       
       
