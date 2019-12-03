@@ -1,4 +1,4 @@
-const db = require("../../data/dbConfig.js");
+const db = require("../data/db.config");
 
 function getResources() {
   return db.select("*").from("resources");

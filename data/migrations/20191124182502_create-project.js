@@ -25,8 +25,7 @@ exports.up = function(knex) {
           tbl.integer(`project_id`)
           .notNullable()
           .unsigned()
-          .references()
-          .inTable(`projects`);
+          .references(`projects.id`);
       })
       .createTable(`prim_connection`, tbl => {
           tbl
@@ -50,7 +49,7 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return(
-      knex.schems
+      knex.schema
       .dropTableIfExists(`prim_connection`)
       .dropTableIfExists(`tasks`)
       .dropTableIfExists(`resources`)

@@ -2,7 +2,11 @@ const db = require ("../data/db.config");
 
 function getTasks() {
     return db
-    .select(
+    
+      .from("tasks")
+      .join("projects", "tasks.project_id", "projects.id")
+
+      .select(
         "tasks.id",
         "tasks.description",
         "tasks.notes",
@@ -10,8 +14,6 @@ function getTasks() {
         "projects.name",
         "projects.description"
       )
-      .from("tasks")
-      .join("project", "tasks.project_id", "projects.id");
 }
 function addTask(task) {
     return db

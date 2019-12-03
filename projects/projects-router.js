@@ -1,15 +1,15 @@
 const express = require(`express`);
 
-const Projects = require(`./projects-helper`);
+const Projects = require(`../projects/projects-helper`);
 
 const router = express.Router();
 
 router.get(`/`, (req, res) => { 
-    Projects.find()
+    Projects.getProjects()
     .then(projects => {
         res.json(projects);
     })
-    .catg(err => {
+    .catch(err => {
         res.status(500).json({ message: `Failed to get projects`});
     });
 });
@@ -17,7 +17,7 @@ router.get(`/`, (req, res) => {
 router.get(`/:id`, (req, res) => {
     const { id } = req.params;
 
-    Projects.findById(id)
+    Projects.getProjectsById(id)
     .then(projects => {
         if (projects) {
             res.json(projects);
@@ -32,7 +32,7 @@ router.get(`/:id`, (req, res) => {
 
 router.post(`/`, (req,res) => {
 const projData = req.body;
-Projects.add(projData)
+Projects.addProjects(projData)
 .then(project => {
     res.status(201).json(project);
 })
@@ -45,7 +45,7 @@ router.put(`/:id`, (req,res) => {
     const { id } = req.params;
     const changes = req.body;
 
-    Projects.findById(id)
+    Projects.getProjectsById(id)
     .then(projects => {
         if (projects) {
             Projects.update(changes, id)

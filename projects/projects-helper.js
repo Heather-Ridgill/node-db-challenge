@@ -1,31 +1,31 @@
-const db = require("../../data/dbConfig.js");
+const db = require("../data/db.config");
 
-function getResources() {
-  return db.select("*").from("resources");
+function getProjects() {
+  return db.select("*").from("projects");
 }
 
-function getResourceById(id) {
+function getProjectsById(id) {
   return db
     .select("*")
-    .from("resources")
+    .from("projects")
     .where({ id });
 }
 
-function addResource(body) {
+function addProjects(body) {
   return db
     .insert(body)
-    .into("resources")
+    .into("projects")
     .then(res => {
       const id = res[0];
       return db
         .select("*")
-        .from("resources")
+        .from("projects")
         .where({ id });
     });
 }
 
 module.exports = {
-  getResourceById,
-  getResources,
-  addResource
+  getProjectsById,
+  getProjects,
+  addProjects
 };

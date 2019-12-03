@@ -1,6 +1,6 @@
 const express = require("express");
 
-const Reso = require("./resourcesHelper.js");
+const Reso = require("../resources/resources-helper");
 
 const router = express.Router();
 
