@@ -1,0 +1,24 @@
+{
+  "name": "db-challenge",
+  "version": "1.0.0",
+  "description": "sprint",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heather-Ridgill/node-db-challenge.git"
+  },
+  "author": "Heather-Ridgill <Heather.Ridgill@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.20.3",
+    "knex-cleaner": "^1.3.0",
+    "sqlite3": "^4.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}
